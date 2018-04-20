@@ -13,6 +13,5 @@ int estado;
 
 int main()
 {
-    printf("Hello world!\n");
-    return 0;
+    listadoDeAlumnos[5] (eAlumno);
 }
