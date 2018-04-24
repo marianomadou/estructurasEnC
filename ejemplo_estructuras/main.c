@@ -4,9 +4,7 @@
 #include <string.h>
 #define TAM 5
 #define LONG 20
-
-
-
+//prueba de git lalallalalala
 typedef struct
 {
 int legajo;
