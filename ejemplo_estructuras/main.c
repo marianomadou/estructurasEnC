@@ -25,7 +25,7 @@ int main(void)
     eAlumno aux;
     eAlumno listadoDeAlumnos[TAM]= {{20,"Sebastian",10,7,8.5}, {11,"Florencia",8,6,7}, {14,"Javier",9,9,9}};
 
-    pedirAlumno()=listadoDeAlumnos;
+
 
     int opcion;
     int index;
@@ -45,9 +45,9 @@ int main(void)
                 index=buscarLibre(listadoDeAlumnos,TAM);
                 if(index!=-1){
 
-                    pedirAlumno();
+                  aux = pedirAlumno();
 
-                    listadoDeAlumnos[index].promedio=calcularPromedio(listadoDeAlumnos[index].nota1,listadoDeAlumnos[index].nota2);
+                    listadoDeAlumnos[index]=aux;
                 }else{
                     printf("No hay mas espacio para guardar legajos!!!");
                     getche();
@@ -178,9 +178,9 @@ eAlumno pedirAlumno()
     scanf("%d", &aluReturn.nota2);
     printf("\n");
 
+    aluReturn.promedio=calcularPromedio(aluReturn.nota1,aluReturn.nota2);
+
     return aluReturn;
 }
-
-
 
 
