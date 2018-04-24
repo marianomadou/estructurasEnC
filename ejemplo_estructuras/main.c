@@ -16,7 +16,8 @@ int nota2;
 float promedio;
 } eAlumno;
 
-
+eAlumno pedirAlumno(void);
+void mostrarAlumno(eAlumno );
 int buscarLibre(eAlumno [],int);
 float calcularPromedio(int,int);
 int buscarLegajo(eAlumno [],int,int);
@@ -26,6 +27,7 @@ int main(void)
     eAlumno aux;
     eAlumno listadoDeAlumnos[TAM]= {{20,"Sebastian",10,7,8.5}, {11,"Florencia",8,6,7}, {14,"Javier",9,9,9}};
 
+    pedirAlumno()=listadoDeAlumnos;
 
     int opcion;
     int index;
@@ -44,18 +46,9 @@ int main(void)
             case 1:
                 index=buscarLibre(listadoDeAlumnos,TAM);
                 if(index!=-1){
-                    printf("Ingrese legajo: ");
-                    scanf("%d",&listadoDeAlumnos[index].legajo);
-                    fflush(stdin);
-                    printf("\nIngrese nombre: ");
-                    gets(listadoDeAlumnos[index].nombre);
-                    fflush(stdin);
-                    printf("\nIngrese nota1: ");
-                    scanf("%d",&listadoDeAlumnos[index].nota1);
-                    fflush(stdin);
-                    printf("\nIngrese nota2: ");
-                    scanf("%d",&listadoDeAlumnos[index].nota2);
-                    fflush(stdin);
+
+                    pedirAlumno();
+
                     listadoDeAlumnos[index].promedio=calcularPromedio(listadoDeAlumnos[index].nota1,listadoDeAlumnos[index].nota2);
                 }else{
                     printf("No hay mas espacio para guardar legajos!!!");
@@ -100,13 +93,8 @@ int main(void)
             case 4:
                 for(int i=0;i<TAM;i++){
                     if(listadoDeAlumnos[i].legajo!=0){
-                        printf("\n---------------------");
-                        printf("\nLegajo N: %d",listadoDeAlumnos[i].legajo);
-                        printf("\nNombre: ");
-                        puts(listadoDeAlumnos[i].nombre);
-                        printf("Nota 1: %d",listadoDeAlumnos[i].nota1);
-                        printf("\nNota 2: %d",listadoDeAlumnos[i].nota2);
-                        printf("\nPromedio: %.1f",listadoDeAlumnos[i].promedio);
+
+                        mostrarAlumno(listadoDeAlumnos[i]);
                     }
                 }
                 getche();
@@ -125,13 +113,8 @@ int main(void)
                 }
                 for(int i=0;i<TAM;i++){
                     if(listadoDeAlumnos[i].legajo!=0){
-                        printf("\n---------------------");
-                        printf("\nLegajo N: %d",listadoDeAlumnos[i].legajo);
-                        printf("\nNombre: ");
-                        puts(listadoDeAlumnos[i].nombre);
-                        printf("Nota 1: %d",listadoDeAlumnos[i].nota1);
-                        printf("\nNota 2: %d",listadoDeAlumnos[i].nota2);
-                        printf("\nPromedio: %.1f",listadoDeAlumnos[i].promedio);
+
+                        mostrarAlumno(listadoDeAlumnos[i]);
                     }
                 }
                 getche();
@@ -171,3 +154,35 @@ int buscarLegajo(eAlumno vec[],int tam,int legajo){
     }
     return retorno;
 }
+
+void mostrarAlumno(eAlumno listadoDeAlumnos )
+{
+    printf("\nLegajo N: %d\n",listadoDeAlumnos.legajo);
+    printf("El nombre es: %s\n",listadoDeAlumnos.nombre);
+    printf("Nota 1: %d\n",listadoDeAlumnos.nota1);
+    printf("Nota 2: %d\n",listadoDeAlumnos.nota2);
+    printf("El promedio: %.1f",listadoDeAlumnos.promedio);
+    printf("\n");
+}
+
+eAlumno pedirAlumno()
+{
+    eAlumno aluReturn;
+
+    printf("Ingrese Legajo: ");
+    scanf("%d", &aluReturn.legajo);
+    printf("Ingrese Nombre: ");
+    fflush(stdin);
+    gets(aluReturn.nombre);
+    printf("Ingrese primer nota: ");
+    scanf("%d", &aluReturn.nota1);
+    printf("Ingrese segunda nota: ");
+    scanf("%d", &aluReturn.nota2);
+    printf("\n");
+
+    return aluReturn;
+}
+
+
+
+
